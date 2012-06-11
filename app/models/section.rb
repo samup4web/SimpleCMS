@@ -1,7 +1,4 @@
-require 'lib/assets/position_mover'
 class Section < ActiveRecord::Base
-
-  include positionMover
 
   belongs_to :page
   has_many :section_edits

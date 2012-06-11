@@ -1,8 +1,5 @@
-require 'lib/assets/position_mover'
+
 class Subject < ActiveRecord::Base
-
-  include positionMover
-
 
   has_many :pages
 

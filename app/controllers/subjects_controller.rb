@@ -5,7 +5,7 @@ class SubjectsController < ApplicationController
   before_filter :confirm_logged_in
 
   def index
-  list
+    list
     render('list')
   end
 
@@ -18,16 +18,15 @@ class SubjectsController < ApplicationController
   end
 
   def new
-     @subject = Subject.new(:name => "default_name")
+    @subject = Subject.new(:name => "default_name")
     @subject_count = Subject.count + 1
   end
 
   def create
-    #new_position = params[:subject].delete(:position)
+    new_position = params[:subject].delete(:position)
     @subject = Subject.new(params[:subject])
 
     if @subject.save
-      #@subject.move_to_position(new_position)
       flash[:notice] = "Subjected created."
       redirect_to(:action => 'list')
     else
@@ -37,15 +36,14 @@ class SubjectsController < ApplicationController
   end
 
   def edit
-      @subject = Subject.find(params[:id])
-      @subject_count = Subject.count
+    @subject = Subject.find(params[:id])
+    @subject_count = Subject.count
   end
 
   def update
     new_position = params[:subject].delete(:position)
     @subject = Subject.find(params[:id])
     if @subject.update_attributes(params[:subject])
-      @subject.move_to_position(new_position)
       flash[:notice] = "Subject updated"
       redirect_to(:action => 'show', :id => @subject.id)
     else
@@ -56,13 +54,12 @@ class SubjectsController < ApplicationController
   end
 
   def delete
-       @subject = Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
   end
 
   def destroy
 
     subject = Subject.find(params[:id])
-    subject.move_to_position(nil)
     subject.destroy
     flash[:notice] = "Subject deleted"
     redirect_to(:action => 'list')
