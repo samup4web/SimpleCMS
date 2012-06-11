@@ -1,0 +1,14 @@
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+<div class="UserAdmin new">
+  <h2>Register New User</h2>
+
+  <%= form_for(:admin_user, :url => {:action => 'create'}) do |u| %>
+
+      <%= render(:partial => 'form', :locals => {:u => u}) %>
+
+      <div class="form-buttons">
+        <%= submit_tag("Register") %>
+      </div>
+
+  <% end %>
+</div>

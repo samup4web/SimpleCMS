@@ -1,0 +1,25 @@
+<%= error_messages_for(@admin_user) %>
+<table summary="Page form field">
+  <tr>
+    <th><%= u.label(:first_name) %></th>
+    <td><%= u.text_field(:first_name) %></td>
+  </tr>
+  <tr>
+    <th><%= u.label(:last_name) %></th>
+    <td><%= u.text_field(:last_name) %></td>
+  </tr>
+  <tr>
+    <th><%= u.label(:username) %></th>
+    <td><%= u.text_field(:username) %></td>
+  </tr>
+  <tr>
+    <th><%= u.label(:email) %></th>
+    <td><%= u.text_field(:email) %></td>
+  </tr>
+  <tr>
+    <th><%= u.label(:password) %></th>
+    <td><%= u.password_field(:password) %></td>
+  </tr>
+
+
+</table>
