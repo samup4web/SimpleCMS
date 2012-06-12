@@ -26,6 +26,7 @@ gem "therubyracer", :require => 'v8'
 
 gem "rails-backbone", "~> 0.7.2"
 
+gem 'pg'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
