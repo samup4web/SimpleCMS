@@ -1,3 +1,7 @@
+<% @page_title = "Admin Users List" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-link') %>
+
 <div class="AdminUser list">
   <h2> Admin Users </h2>
   <%= link_to("Add New User", {:action => 'new'}, :class => 'action new') %>
