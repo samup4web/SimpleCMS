@@ -1,4 +1,7 @@
+require 'position_mover'
 class Section < ActiveRecord::Base
+
+  include PositionMover
 
   belongs_to :page
   has_many :section_edits
@@ -20,7 +23,7 @@ class Section < ActiveRecord::Base
   private
 
   def position_scope
-    "sections.subject_id = #{page_id.to_i}"
+    "sections.page_id = #{page_id.to_i}"
   end
 
 end

@@ -1,4 +1,7 @@
+require 'position_mover'
 class Page < ActiveRecord::Base
+
+  include PositionMover
 
   belongs_to :subject
   has_many :sections

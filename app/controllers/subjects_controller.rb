@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
 
-  layout 'admin'
+
+layout 'admin'
 
   before_filter :confirm_logged_in
 
@@ -27,6 +28,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(params[:subject])
 
     if @subject.save
+      @subject.move_to_position(new_position)
       flash[:notice] = "Subjected created."
       redirect_to(:action => 'list')
     else
@@ -44,6 +46,7 @@ class SubjectsController < ApplicationController
     new_position = params[:subject].delete(:position)
     @subject = Subject.find(params[:id])
     if @subject.update_attributes(params[:subject])
+      @subject.move_to_position(new_position)
       flash[:notice] = "Subject updated"
       redirect_to(:action => 'show', :id => @subject.id)
     else
@@ -60,6 +63,7 @@ class SubjectsController < ApplicationController
   def destroy
 
     subject = Subject.find(params[:id])
+    subject.move_to_position(nil)
     subject.destroy
     flash[:notice] = "Subject deleted"
     redirect_to(:action => 'list')
